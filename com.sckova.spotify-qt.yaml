@@ -1,0 +1,45 @@
+app-id: com.sckova.spotify-qt
+runtime: org.kde.Platform
+runtime-version: '6.9'
+sdk: org.kde.Sdk
+command: spotify-qt
+finish-args:
+  - "--share=ipc"
+  - "--socket=wayland"
+  - "--socket=pulseaudio"
+  - "--share=network"
+  - "--device=dri"
+  - "--talk-name=org.gnome.SettingsDaemon.MediaKeys"
+  - "--talk-name=org.gnome.SessionManager"
+  - "--talk-name=org.kde.StatusNotifierWatcher"
+  - "--own-name=org.mpris.MediaPlayer2.spotify-qt"
+  - "--filesystem=xdg-music:ro"
+  - "--filesystem=xdg-pictures:ro"
+  - "--env=LD_LIBRARY_PATH=/app/lib"
+  - "--env=TMPDIR=/tmp"
+  - "--env=XCURSOR_PATH=/run/host/user-share/icons:/run/host/share/icons"
+cleanup:
+  - "/include"
+  - "/lib/pkgconfig"
+  - "/lib/cmake"
+  - "/share/pkgconfig"
+  - "/share/aclocal"
+  - "/share/doc"
+  - "/man"
+  - "/share/man"
+  - "/share/gtk-doc"
+  - "/share/vala"
+  - "*.la"
+  - "*.a"
+modules:
+  - name: spotify-qt
+    builddir: true
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/kraxarn/spotify-qt.git
+        tag: v4.0.0
+    post-install:
+      - "mv /app/share/applications/spotify-qt.desktop /app/share/applications/com.sckova.spotify-qt.desktop"
+      - "mkdir -p /app/share/icons/hicolor/256x256/apps"
+      - "mv /app/share/icons/hicolor/scalable/apps/spotify-qt.svg /app/share/icons/hicolor/256x256/apps/com.sckova.spotify-qt.png"
