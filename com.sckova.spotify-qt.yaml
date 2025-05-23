@@ -9,7 +9,6 @@ finish-args:
   - "--socket=fallback-x11"
   - "--socket=pulseaudio"
   - "--share=network"
-  - "--device=dri"
   - "--talk-name=org.kde.StatusNotifierWatcher"
   - "--own-name=org.mpris.MediaPlayer2.spotify-qt"
 cleanup:
