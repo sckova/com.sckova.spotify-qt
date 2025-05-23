@@ -42,4 +42,4 @@ modules:
     post-install:
       - "mv /app/share/applications/spotify-qt.desktop /app/share/applications/com.sckova.spotify-qt.desktop"
       - "mkdir -p /app/share/icons/hicolor/256x256/apps"
-      - "mv /app/share/icons/hicolor/scalable/apps/spotify-qt.svg /app/share/icons/hicolor/256x256/apps/com.sckova.spotify-qt.png"
+      - "mv /app/share/icons/hicolor/scalable/apps/spotify-qt.svg /app/share/icons/hicolor/256x256/apps/com.sckova.spotify-qt.svg"
