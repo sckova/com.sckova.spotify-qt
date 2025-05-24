@@ -4,26 +4,11 @@ runtime-version: '6.9'
 sdk: org.kde.Sdk
 command: spotify-qt
 finish-args:
-  - "--share=ipc"
   - "--socket=wayland"
   - "--socket=fallback-x11"
-  - "--socket=pulseaudio"
+  - "--socket=session-bus"
   - "--share=network"
-  - "--talk-name=org.kde.StatusNotifierWatcher"
-  - "--own-name=org.mpris.MediaPlayer2.spotify-qt"
-cleanup:
-  - "/include"
-  - "/lib/pkgconfig"
-  - "/lib/cmake"
-  - "/share/pkgconfig"
-  - "/share/aclocal"
-  - "/share/doc"
-  - "/man"
-  - "/share/man"
-  - "/share/gtk-doc"
-  - "/share/vala"
-  - "*.la"
-  - "*.a"
+  - "--filesystem=~/.config/spotifyd/spotifyd.conf"
 modules:
   - name: spotify-qt
     builddir: true
